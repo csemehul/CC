@@ -1,4 +1,4 @@
-class Solution {
+class Solution {             /*Day 1 of 100 days of Coding Challenge on Leetcode*/
     private:
     int map[26] = {0};
 public:
