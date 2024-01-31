@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void insert(struct TrieNode *root, string s) {
+        TrieNode *t = root;
+        
+        for(int i{}; i < s.size(); i++) {
+            if(!t->children[s[i] - 'a']) t->children[s[i] - 'a'] = new TrieNode();
+            t = t->children[s[i] - 'a'];
+        }
+        
+        t->isLeaf = 1;
+    }
+    
+    bool search(struct TrieNode *root, string s) {
+        TrieNode *t = root;
+        
+        for(int i{}; i < s.size(); i++) {
+            if(!t->children[s[i] - 'a']) return 0;
+            t = t->children[s[i] - 'a'];
+        }
+        
+        return t->isLeaf;
+    }
+};
