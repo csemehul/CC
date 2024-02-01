@@ -1,0 +1,12 @@
+#User function Template for python3
+
+class Solution:
+    #Function to check if a string is Pangram or not.
+    def checkPangram(self,s):
+        #code here
+        d=0
+        s=s.lower()
+        for i in range(97,123):
+            if chr(i) in s:
+                d+=1
+        return d==26
