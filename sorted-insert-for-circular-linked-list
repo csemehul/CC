@@ -1,0 +1,29 @@
+class Solution
+{
+    public:
+    Node *sortedInsert(Node* head, int data)
+    {
+        Node* new_node = new Node(data);
+        if(!head){
+            new_node->next = new_node;
+            return new_node;
+        }
+       Node* temp = head;
+       Node* prev = NULL;
+       do{
+           prev = temp;
+           temp = temp->next;
+           if(data >= prev->data and data <= temp->data) break;
+           
+           if(prev->data > temp->data and data >= prev->data) break;
+       } while(temp != head);
+       
+       prev->next = new_node;
+       new_node->next = temp;
+       
+       if(data < head->data) 
+          head = new_node;
+        
+        return head;
+    }
+};
