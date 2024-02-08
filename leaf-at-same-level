@@ -1,0 +1,34 @@
+class Solution{
+  public:
+  
+    int solve(Node*root,bool&ans)
+    {
+        if(root==NULL)
+        {
+            return 0;
+        }
+    
+        int lh=solve(root->left,ans);
+        int rh=solve(root->right,ans);
+        
+        if(lh!=rh && root->left && root->right) //at any node
+        {
+            ans=false;
+        }
+        
+        return max(lh,rh)+1;
+    }
+  
+  
+  
+  
+    /*You are required to complete this method*/
+    bool check(Node *root)
+    {
+        //we can try to find the difference in left height and right height
+        bool ans=true;
+        int height=solve(root,ans);
+        return ans;
+    }
+
+ 
