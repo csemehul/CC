@@ -1,0 +1,21 @@
+class Solution
+{
+    public static int b;
+    public static int isSum(Node root){
+        if(root==null) return 0;
+        int l=0,r=0;
+        l+=isSum(root.left);
+        r+=isSum(root.right);
+        if((root.left!=null || root.right!=null) && l+r!=root.data) b=0;
+        return root.data;
+    }
+    //Function to check whether all nodes of a tree have the value 
+    //equal to the sum of their child nodes.
+    public static int isSumProperty(Node root)
+    {
+        // add your code here
+        b=1;
+        isSum(root);
+        return b;
+    }
+}
