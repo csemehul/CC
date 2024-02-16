@@ -1,0 +1,26 @@
+class Solution {
+public:
+    void inOrder(Node *root, vector<int> &in) {
+        if(root) {
+            inOrder(root->left, in);
+            in.push_back(root->data);
+            inOrder(root->right, in);
+        }
+    }
+
+    Node *flattenBST(Node *root) {
+        vector<int> in;
+        inOrder(root, in);
+        
+        Node *head = new Node(in[0]);
+        Node *p = head;
+        
+        for(int i = 1; i < in.size(); i++) {
+            p->right = new Node(in[i]);
+            p->left = NULL;
+            p = p->right;
+        }
+        
+        return head;
+    }
+};
