@@ -1,0 +1,13 @@
+class Solution
+{
+    public:
+    int sum=0;
+        /*You are required to complete below method */
+        int sumOfLeafNodes(Node *root ){
+           if(root == nullptr) return 0;
+           if(root ->right ==NULL && root->left == NULL) sum+=root->data;
+           sumOfLeafNodes(root->left);
+           sumOfLeafNodes(root->right);
+           return sum;
+        }
+};
