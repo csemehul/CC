@@ -1,0 +1,24 @@
+class Solution{
+public:
+    int minValue(string s, int k){
+        int i, ans=0;
+        vector<int> A(26, 0);
+        for(auto x: s) A[x-'a']++;
+        priority_queue<int> pq;
+        for(i=0;i<26;i++) {
+            if(A[i] != 0) {
+                pq.push(A[i]);
+            }
+        }
+        while(pq.size() && k--) {
+            auto top=pq.top(); pq.pop();
+            top--;
+            if(top!=0) pq.push(top);
+        }
+        while(pq.size()) {
+            int val=pq.top(); pq.pop();
+            ans += val*val;
+        }
+        return ans;
+    }
+};
