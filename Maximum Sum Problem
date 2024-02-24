@@ -1,0 +1,19 @@
+int rec(int n,vector<int> &v)
+        {
+           if(n<=0)
+            return 0;
+            
+           if(v[n]!=-1)
+            return v[n];
+            
+           int l=rec(n/2,v);
+           int m=rec(n/3,v);
+           int r=rec(n/4,v);
+           
+           return v[n]=max(n,l+m+r);
+        }
+        int maxSum(int n)
+        {
+            vector<int> v(n+1,-1);
+            return rec(n,v);
+        }
