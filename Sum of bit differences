@@ -1,0 +1,25 @@
+class Solution{
+public:
+    
+    long long sumBitDifferences(int arr[], int n) {
+        long long ans = 0;
+        
+        for(int i = 0; i < 32; i++) {
+            long long ones = 0;
+            long long zeros = 0;
+            
+            for(int j = 0; j < n; j++) {
+                if(arr[j]&1)
+                    ones++;
+                else 
+                    zeros++;
+                    
+                arr[j] >>= 1;
+            }
+            
+            ans += 2*(ones*zeros);
+        }
+        
+        return ans;
+    }
+};
