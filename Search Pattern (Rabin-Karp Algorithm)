@@ -1,0 +1,12 @@
+class Solution {
+    public:
+        vector <int> search(string pattern, string text) {
+            vector<int> ans;
+            auto ind=text.find(pattern);
+            while(ind != string::npos) {
+                ans.push_back(ind+1);
+                ind=text.find(pattern, ind+1);
+            }
+            return ans;
+        }
+};
