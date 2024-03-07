@@ -1,0 +1,34 @@
+class Solution {
+    static String longestSubstring(String s, int n) {
+        String resultedString = "";
+        StringBuilder str = new StringBuilder(s);
+        boolean flag = false;
+        for(int i=0;i<n;i++){
+            String temp = "" + str.charAt(i);
+            for(int j=i;j<n;j++){
+                
+                if(str.indexOf(temp,j+1) != -1){
+                    if(resultedString.length() < temp.length()){
+                        resultedString = temp;
+                        
+                    }
+                }else{
+                    flag = true;
+                }
+                
+                if(j+1 != n){
+                    temp = temp+ str.charAt(j+1);
+                }
+                
+                if(flag == true){
+                    j=n;
+                    flag = false;
+                }
+            }
+        }
+        if(resultedString ==""){
+            resultedString = "-1";
+        }
+        return resultedString;
+    }
+};
