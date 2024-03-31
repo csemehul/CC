@@ -1,0 +1,25 @@
+class Solution {
+  public:
+  int ans=-1;
+    void traverse(Node* root, int n){
+        if(root==NULL){
+            return ;
+        }
+        else if(root->key == n){
+            ans=root->key;
+            return ;
+        }
+        else if(root->key<n){
+            ans=max(ans,root->key);
+            traverse(root->right,n);
+        }
+        else{
+            traverse(root->left,n);
+        }
+    }
+    int findMaxForN(Node* root, int n) {
+        // code here
+        traverse(root,n);
+        return ans;
+    }
+};
