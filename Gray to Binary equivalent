@@ -1,0 +1,44 @@
+class Solution{
+    public:
+    // function to convert a given Gray equivalent n to Binary equivalent.
+    int grayToBinary(int n)
+    {
+        //for finding the binary number
+        int binary[32];
+        int i=0;
+        while(n>0){
+            binary[i]=n%2;
+            n=n/2;
+            i++;
+        }
+        
+        //arrange binary number correct order
+         int binaryNum[32];
+         int k=0;
+         for (int j = i - 1; j >= 0; j--){
+          binaryNum[k]=binary[j];
+          k++;
+         }
+        
+        //convert binary code into gray code
+        int grayNum[32];
+        
+        grayNum[0]=binaryNum[0];
+        
+        for(int i=1;i<=k-1;i++){
+            grayNum[i]=grayNum[i-1]^binaryNum[i];
+            //s+=grayNum[i];
+        }
+        //cout<<s<<" "<<endl;
+        int sum=0;
+        int m=k-1;
+       // cout<< grayNum[k-3]<<endl;
+        for(int i=0;i<k;i++){
+          sum=sum + grayNum[m]*pow(2,i);
+          m--;
+        }
+        
+        return sum;
+        
+    }
+};
