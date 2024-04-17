@@ -1,0 +1,9 @@
+class Solution {
+public:
+    string smallestFromLeaf(TreeNode* r) {
+  if (r == nullptr) 
+      return "|";
+  auto s = string(1, 'a' + r->val);
+  return r->left == r->right ? s : min(smallestFromLeaf(r->left) + s, smallestFromLeaf(r->right) + s);
+}
+};
