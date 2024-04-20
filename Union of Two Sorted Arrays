@@ -1,0 +1,73 @@
+class Solution{
+
+    public:
+
+    vector<int> findUnion(int a[], int b[], int n, int m)
+
+    {
+
+        set<int>s;
+
+        int l=0;
+
+        int r=0;
+
+        while(l<n and r<m){
+
+            if(a[l]==b[r]){
+
+                s.insert(a[l]);
+
+                l++;
+
+                r++;
+
+            }
+
+            else if(a[l]<b[r]){
+
+                s.insert(a[l]);
+
+                l++;
+
+            }
+
+            else{
+
+                s.insert(b[r]);
+
+                r++;
+
+            }
+
+        }
+
+        while(l<n){
+
+            s.insert(a[l]);
+
+            l++;
+
+        }
+
+        while(r<m){
+
+            s.insert(b[r]);
+
+            r++;
+
+        }
+
+        vector<int>ans;
+
+        for(auto it:s){
+
+            ans.push_back(it);
+
+        }
+
+        return ans;
+
+    }
+
+};
