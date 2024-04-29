@@ -1,0 +1,21 @@
+class Solution {
+    public:
+    Node* deleteK(Node *head,int K){
+        Node* dumy = new Node(0);
+        Node* prev = dumy;
+        prev -> next = head;
+        Node* curr = head;
+        int cnt = 1;
+        while(curr != NULL) {
+            if(cnt % K == 0) {
+                prev -> next = curr -> next;
+                
+            } else {
+                prev = curr;
+            }
+            curr = curr -> next;
+            cnt++;
+        }
+        return dumy -> next;
+    }
+};
