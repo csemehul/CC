@@ -1,0 +1,20 @@
+from collections import defaultdict
+def noSibling(root):
+    # code here
+    parent = defaultdict(list)
+    def dfs(root, prev_node):
+        parent[prev_node].append(root)
+        if root.left:
+            dfs(root.left, root)
+        if root.right:
+            dfs(root.right, root)
+    dfs(root, -1)
+    # print(parent)
+    ans = []
+    for k, v in parent.items():
+        if len(v) == 1 and k != -1:
+            ans.append(v[0].data)
+    if not ans :
+        return [-1]
+    ans.sort()
+    return ans
