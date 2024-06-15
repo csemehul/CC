@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int findMaximizedCapital(int k, int w, vector<int>& profits, vector<int>& capital) {
+        int n = profits.size();
+        vector<pair<int, int>> projects(n);
+        
+        // Create a list of projects with their capital requirements and profits
+        for (int i = 0; i < n; i++) {
+            projects[i] = {capital[i], profits[i]};
+        }
+        
+        // Sort the projects based on their capital requirements in ascending order
+        sort(projects.begin(), projects.end());
+        
+        int i = 0; // Index to iterate through the sorted projects
+        priority_queue<int> maximizeCapital; // Max-heap to store profits of affordable projects
+        
+        // Iterate up to k times, or until no more projects can be selected
+        while (k--) {
+            // Add all affordable projects to the max-heap
+            while (i < n && projects[i].first <= w) {
+                maximizeCapital.push(projects[i].second);
+                i++;
+            }
+            
+            // If no projects are affordable, break out of the loop
+            if (maximizeCapital.empty()) break;
+            
+            // Select the most profitable project and update the current capital
+            w += maximizeCapital.top();
+            maximizeCapital.pop();
+        }
+        
+        return w; // Return the maximized capital after selecting up to k projects
+    }
+};
