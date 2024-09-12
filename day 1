@@ -1,0 +1,59 @@
+Let's perform a dry run of the code on two different linked lists: one with an odd number of nodes and another with an even number of nodes.
+
+### 1. Odd Number of Nodes
+Consider a linked list: `1 -> 2 -> 3 -> 4 -> 5 -> NULL`
+
+**Initial State:**
+- `slow` points to `1`
+- `fast` points to `1`
+
+#### First Iteration:
+- `fast->next` is `2`, and `fast->next->next` is `3`, so the loop continues.
+- `slow = slow->next` → `slow` moves to `2`
+- `fast = fast->next->next` → `fast` moves to `3`
+
+#### Second Iteration:
+- `fast->next` is `4`, and `fast->next->next` is `5`, so the loop continues.
+- `slow = slow->next` → `slow` moves to `3`
+- `fast = fast->next->next` → `fast` moves to `5`
+
+#### Third Iteration:
+- `fast->next` is `NULL`, so the loop terminates.
+
+**After the loop:**
+- Since `fast->next` is `NULL`, we return `slow->data`, which is `3`.
+
+**Output:** The middle node data is `3`.
+
+---
+
+### 2. Even Number of Nodes
+Consider a linked list: `1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL`
+
+**Initial State:**
+- `slow` points to `1`
+- `fast` points to `1`
+
+#### First Iteration:
+- `fast->next` is `2`, and `fast->next->next` is `3`, so the loop continues.
+- `slow = slow->next` → `slow` moves to `2`
+- `fast = fast->next->next` → `fast` moves to `3`
+
+#### Second Iteration:
+- `fast->next` is `4`, and `fast->next->next` is `5`, so the loop continues.
+- `slow = slow->next` → `slow` moves to `3`
+- `fast = fast->next->next` → `fast` moves to `5`
+
+#### Third Iteration:
+- `fast->next` is `6`, but `fast->next->next` is `NULL`, so the loop terminates.
+
+**After the loop:**
+- Since `fast->next` is not `NULL` (it's `6`), we return `slow->next->data`, which is `4`.
+
+**Output:** The middle node data is `4`.
+
+---
+
+### Summary:
+- For an odd number of nodes: The function returns the middle node's data.
+- For an even number of nodes: The function returns the second middle node's data.
